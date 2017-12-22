@@ -222,7 +222,6 @@ class Learner(object):
 
                     if epoch % 50 == 0:
                         meta_embs = meta_embs_output(dev_ids[0])
-                        print meta_embs.shape
                         out_file = '%s.epoch%d' % (args.out, epoch)
-                        write_embs(dic, meta_embs.eval(), out_file)
+                        write_embs(dic, np.asarray(meta_embs), out_file)
             print 'Done'
