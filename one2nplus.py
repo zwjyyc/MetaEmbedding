@@ -58,6 +58,7 @@ class One2NPlusModel(object):
             else:
                 self.l2_sqr += args.l2_reg * T.sum(p ** 2)
 
+        self.all_loss += self.l2_sqr
         n_params = sum(len(x.get_value(borrow=True).ravel()) for x in self.params)
         say("total # parameters: {}\n".format(n_params))
 
