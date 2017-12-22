@@ -118,7 +118,7 @@ def create_batches(size, word_dic, embs):
     perm = range(len(batches_train_ids))
     random.shuffle(perm)
     batches_train_ids = [batches_train_ids[i] for i in perm]
-    batches_train_masks = [batches_train_ids[i] for i in perm]
+    batches_train_masks = [batches_train_masks[i] for i in perm]
     return batches_train_ids, batches_train_masks, batches_dev_ids, batches_dev_masks
 
 
