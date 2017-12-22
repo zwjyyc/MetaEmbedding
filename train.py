@@ -30,7 +30,7 @@ if __name__ == "__main__":
                         )
     parser.add_argument("--dropout_rate",
                         type=float,
-                        default=0,
+                        default=0.2,
                         help="dropout rate"
                         )
     parser.add_argument("--eval_period",

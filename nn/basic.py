@@ -134,7 +134,7 @@ class EmbeddingLayer(object):
             embs[len(vocab)] = random_init((n_d,)) * 0.0 # for oov embs
             emb_vals = embs  # np.vstack(embs).astype(theano.config.floatX)
         else:
-            emb_vals = random_init((len(vocab) + 1, n_d)) * 0.05
+            emb_vals = random_init((len(vocab) + 1, n_d)) * 0.5
 
         self.init_end = len(vocab) if fix_init_embs else -1
         self.embs = create_shared(emb_vals)
