@@ -29,7 +29,7 @@ def build_dic(files, dict_file):
 def write_dic(word_dic, src):
     with codecs.open(src, 'w', 'utf8') as fout:
         for k, v in word_dic.iteritems():
-            out_str = '%s\t%d\n' % (k, v)
+            out_str = '%s\t%d\n' % (k.decode('utf-8'), v)
             fout.write(out_str)
 
 
