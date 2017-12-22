@@ -64,8 +64,9 @@ def normalize_weight(weights):
         sum_ += weight
 
     for i in range(len(weights)):
-        weights[i] = weight[i] * 1.0 / sum_
+        weights[i] = weights[i] * 1.0 / sum_
 
+    print weights
     return weights
 
 
