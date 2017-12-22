@@ -93,7 +93,7 @@ def random_init(size, rng=None, rng_type=None):
 
 
 def create_shared(vals, name=None):
-    return theano.shared(vals, name=name)
+    return theano.shared(vals, name=name, borrow=True)
 
 
 
