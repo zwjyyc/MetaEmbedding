@@ -32,7 +32,7 @@ class One2NPlusModel(object):
 
         self.all_loss = 0.0
         for i in range(len(weights)):
-            mask, weight, golden_emb = batch_masks[:, i], weights[i], golden_embs[i]
+            mask, weight, golden_emb = batch_masks[i], weights[i], golden_embs[i]
             n_o_d = golden_emb.n_d
             layer = Layer(n_m_d, n_o_d, linear)
             layers.append(layer)
