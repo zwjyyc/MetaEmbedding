@@ -1,6 +1,7 @@
 import os
 import codecs
 
+
 def build_dic(files, dict_file):
     word_dic = {}
     print 'Building word dict from '
@@ -28,13 +29,13 @@ def build_dic(files, dict_file):
 def write_dic(word_dic, src):
     with codecs.open(src, 'w', 'utf8') as fout:
         for k, v in word_dic.iteritems():
-            fout.write('%s\t%d\n' % (k, v))
+            fout.write('%s\t%d\n' % (k.encode('utf8'), v))
 
 
 def load_dic(src):
     word_dic = {}
     print 'Loading word dict from %s' % src
-    with open(src, 'r') as fin:
+    with codecs.open(src, 'r', 'utf8') as fin:
         for line in fin:
             items = line.strip().split()
             word_dic[items[0]] = int(items[1])
