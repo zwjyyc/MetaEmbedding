@@ -115,6 +115,7 @@ class EmbeddingLayer(object):
             embs = random_init((len(vocab) + 1, n_d)) * 0.01
             cnt = 0
             t_word = t_word.decode('utf8')
+
             if t_word in vocab:
                 embs[vocab[t_word]] = t_vector
                 cnt = 1
@@ -124,6 +125,8 @@ class EmbeddingLayer(object):
                 if len(vector) != n_d:
                     continue
                 if uword in vocab:
+                    if vocab[t_word] >= len(vocab):
+                        continue
                     embs[vocab[uword]] = vector
                     cnt += 1
 
