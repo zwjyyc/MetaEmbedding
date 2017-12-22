@@ -109,7 +109,6 @@ def create_batches(size, word_dic, embs):
         end = (slice + 1) * size
         batch_id = ids[start:end]
         batch_mask = masks[:, start:end]
-        print batch_mask.shape
         if slice < slices_num - 100:
             batches_train_ids.append(batch_id)
             batches_train_masks.append(batch_mask)

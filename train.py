@@ -35,12 +35,12 @@ if __name__ == "__main__":
                         )
     parser.add_argument("--eval_period",
                         type=int,
-                        default=1000,
+                        default=10000,
                         help="evaluate on dev every period"
                         )
     parser.add_argument("--learning",
                         type=str,
-                        default="adagrad",
+                        default="adadelta",
                         help="learning method (sgd, adagrad, adam, ...)"
                         )
     parser.add_argument("--learning_rate",
