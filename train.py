@@ -40,7 +40,7 @@ if __name__ == "__main__":
                         )
     parser.add_argument("--learning",
                         type=str,
-                        default="sgd",
+                        default="adagrad",
                         help="learning method (sgd, adagrad, adam, ...)"
                         )
     parser.add_argument("--learning_rate",
