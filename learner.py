@@ -1,5 +1,5 @@
 import os
-
+import codecs
 
 def build_dic(files, dict_file):
     word_dic = {}
@@ -20,25 +20,25 @@ def build_dic(files, dict_file):
                     word_dic[items[0]] = size
             print 'Loaded %d lines!', cnt
 
-    print 'The big dictionary contains %d words', len(word_dic)
+    print 'The big dictionary contains %d words' % len(word_dic)
     write_dic(word_dic, dict_file)
     return word_dic
 
 
 def write_dic(word_dic, src):
-    with open(src, 'w') as fout:
+    with codecs.open(src, 'w', 'utf8') as fout:
         for k, v in word_dic.iteritems():
             fout.write('%s\t%d\n' % (k, v))
 
 
 def load_dic(src):
     word_dic = {}
-    print 'Loading word dict from %s', src
+    print 'Loading word dict from %s' % src
     with open(src, 'r') as fin:
         for line in fin:
             items = line.strip().split()
             word_dic[items[0]] = int(items[1])
-    print 'Loaded %d words!', len(word_dic)
+    print 'Loaded %d words!' % len(word_dic)
     return word_dic
 
 
