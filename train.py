@@ -25,7 +25,7 @@ if __name__ == "__main__":
                         )
     parser.add_argument("--batch",
                         type=int,
-                        default=256,
+                        default=1024,
                         help="mini-batch size"
                         )
     parser.add_argument("--dropout_rate",
