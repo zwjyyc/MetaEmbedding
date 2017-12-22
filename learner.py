@@ -16,6 +16,8 @@ def build_dic(files, dict_file):
                 items = line.strip().split()
                 if cnt == 1:
                     assert len(items) == 2, 'the first line must contain numbers of words and dimension'
+
+                items[0] = items[0].decode('utf8', 'ignore')
                 if items[0] not in word_dic:
                     size = len(word_dic)
                     word_dic[items[0]] = size
@@ -29,7 +31,7 @@ def build_dic(files, dict_file):
 def write_dic(word_dic, src):
     with codecs.open(src, 'w', 'utf8') as fout:
         for k, v in word_dic.iteritems():
-            out_str = '%s\t%d\n' % (k.decode('utf-8'), v)
+            out_str = '%s\t%d\n' % (k, v)
             fout.write(out_str)
 
 
