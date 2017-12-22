@@ -19,7 +19,7 @@ def build_dic(files, dict_file):
                 if items[0] not in word_dic:
                     size = len(word_dic)
                     word_dic[items[0]] = size
-            print 'Loaded %d lines!', cnt
+            print 'Loaded %d lines!' % cnt
 
     print 'The big dictionary contains %d words' % len(word_dic)
     write_dic(word_dic, dict_file)
@@ -29,7 +29,8 @@ def build_dic(files, dict_file):
 def write_dic(word_dic, src):
     with codecs.open(src, 'w', 'utf8') as fout:
         for k, v in word_dic.iteritems():
-            fout.write('%s\t%d\n' % (k.encode('utf8'), v))
+            out_str = '%s\t%d\n' % (k, v)
+            fout.write(out_str)
 
 
 def load_dic(src):
@@ -39,7 +40,8 @@ def load_dic(src):
         for line in fin:
             items = line.strip().split()
             word_dic[items[0]] = int(items[1])
-    print 'Loaded %d words!' % len(word_dic)
+    out_str = 'Loaded %d words!' % len(word_dic)
+    print out_str
     return word_dic
 
 
