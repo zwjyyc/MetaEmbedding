@@ -30,7 +30,7 @@ class One2NPlusModel(object):
         slices_embs = slices_embs.reshape((batch_ids.shape[0], n_m_d))
         prev_output = apply_dropout(slices_embs, dropout, v2=True)
 
-        self.all_loss = None
+        self.all_loss = 0.0
         for i in range(len(weights)):
             mask, weight, golden_emb = batch_masks[:, i], weights[i], golden_embs[i]
             n_o_d = golden_emb.n_d
