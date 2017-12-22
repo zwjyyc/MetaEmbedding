@@ -42,6 +42,9 @@ def load_dic(src):
     with codecs.open(src, 'r', 'utf8') as fin:
         for line in fin:
             items = line.strip().split()
+            if len(items) != 2:
+                print '@#@' + line + '@#@'
+                continue
             word_dic[items[0]] = int(items[1])
     out_str = 'Loaded %d words!' % len(word_dic)
     print out_str
