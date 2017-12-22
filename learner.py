@@ -113,6 +113,8 @@ def create_batches(size, word_dic, embs):
             batches_train_ids.append(batch_id)
             batches_train_masks.append(batch_mask)
         else:
+            batches_train_ids.append(batch_id)
+            batches_train_masks.append(batch_mask)
             batches_dev_ids.append(batch_id)
             batches_dev_masks.append(batch_mask)
 
