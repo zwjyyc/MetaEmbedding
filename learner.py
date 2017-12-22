@@ -13,7 +13,8 @@ def build_dic(files, dict_file):
             for line in fin:
                 cnt += 1
                 items = line.strip().split()
-                assert cnt == 1 and len(items) == 2, 'the first line must contain numbers of words and dimension'
+                if cnt == 1:
+                    assert len(items) == 2, 'the first line must contain numbers of words and dimension'
                 if items[0] not in word_dic:
                     size = len(word_dic)
                     word_dic[items[0]] = size
