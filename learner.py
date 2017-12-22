@@ -16,6 +16,7 @@ def build_dic(files, dict_file):
                 items = line.strip().split()
                 if cnt == 1:
                     assert len(items) == 2, 'the first line must contain numbers of words and dimension'
+                    continue
 
                 items[0] = items[0].decode('utf8', 'ignore')
                 if items[0] not in word_dic:
