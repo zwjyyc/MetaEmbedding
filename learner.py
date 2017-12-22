@@ -139,7 +139,7 @@ class Learner(object):
             print embs_in
             embs_set.append(EmbeddingLayer(self.dic, pre_embs=load_embedding_iterator(embs_in)))
 
-        self.mapper = One2NPlusModel(args, self.embs_set, self.weights)
+        self.mapper = One2NPlusModel(args, embs_set, self.weights)
 
     def run(self):
         mapper = self.mapper
