@@ -87,8 +87,8 @@ class One2NPlusModel(object):
 
         embs_output = theano.function(
             inputs=[self.batch_ids],
-            outputs=meta_emb,
-            allow_input_downcast = True
+            outputs=meta_emb.embs,
+            allow_input_downcast=True
         )
 
         return train_model, predict_model, embs_output, self.params
