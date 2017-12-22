@@ -125,7 +125,7 @@ class EmbeddingLayer(object):
                 if len(vector) != n_d:
                     continue
                 if uword in vocab:
-                    if vocab[t_word] >= len(vocab):
+                    if vocab[uword] >= len(vocab):
                         continue
                     embs[vocab[uword]] = vector
                     cnt += 1
