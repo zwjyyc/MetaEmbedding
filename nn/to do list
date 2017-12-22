@@ -1,0 +1,11 @@
+2017.12.22
+Namespace(batch=256, dict='embs/word.dict', dim=128, dropout_rate=0, embs=['embs/122g.embs', '8', 'embs/baike.embs', '1', 'embs/wiki.embs', '1'], eval_period=1000, l2_reg=1e-05, learning='sgd', learning_rate=0.001, max_epochs=100, out='', save='models/DrModel')
+Building word dict from
+['embs/122g.embs', 'embs/baike.embs', 'embs/wiki.embs']
+embs/122g.embs
+Loaded 6115349 lines!
+embs/baike.embs
+Loaded 305976 lines!
+embs/wiki.embs
+Loaded 558680 lines!
+The big dictionary contains 6351837 words
