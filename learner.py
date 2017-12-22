@@ -92,7 +92,8 @@ def create_batches(size, word_dic, embs):
                 word = items[0].decode('utf8', 'ignore')
                 if word in word_dic:
                     word_id = word_dic[word]
-                    tmp_mask[word_id] = 1
+                    if word_id < len(word_dic):
+                        tmp_mask[word_id] = 1
         masks.append(tmp_mask)
 
     batches_train_ids = []
