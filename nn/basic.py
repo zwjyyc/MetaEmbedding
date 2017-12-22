@@ -120,7 +120,7 @@ class EmbeddingLayer(object):
                 cnt = 1
 
             for word, vector in pre_embs:
-                uword = word.decode('utf8')
+                uword = word.decode('utf8', 'ignore')
                 if uword in vocab:
                     embs[vocab[uword]] = vector
                     cnt += 1
