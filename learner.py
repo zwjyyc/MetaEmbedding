@@ -30,8 +30,8 @@ def build_dic(files, dict_file):
 
 def write_dic(word_dic, src):
     with codecs.open(src, 'w', 'utf8') as fout:
-        for k, v in word_dic.iteritems():
-            out_str = '%s\t%d\n' % (k, v)
+        for key, val in sorted(word_dic.items(), key=lambda (k, v): (v, k)):
+            out_str = '%s\t%d\n' % (key, val)
             fout.write(out_str)
 
 
