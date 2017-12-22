@@ -3,6 +3,7 @@ import codecs
 import time
 import random
 import theano
+import numpy as np
 
 from nn import EmbeddingLayer
 from one2nplus import *
@@ -93,9 +94,10 @@ def create_batches(size, word_dic, embs):
                 if word in word_dic:
                     word_id = word_dic[word]
                     if word_id < len(word_dic):
-                        tmp_mask[word_id] = 1
+                        tmp_mask[word_id] = 1.0
         masks.append(tmp_mask)
 
+    masks = np.array(masks)
     batches_train_ids = []
     batches_train_masks = []
     batches_dev_ids = []
@@ -106,8 +108,8 @@ def create_batches(size, word_dic, embs):
         start = slice * size
         end = (slice + 1) * size
         batch_id = ids[start:end]
-        batch_mask = masks[:][start:end]
-
+        batch_mask = masks[:, start:end]
+        print batch_mask.shape
         if slice < slices_num - 100:
             batches_train_ids.append(batch_id)
             batches_train_masks.append(batch_mask)
