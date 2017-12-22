@@ -125,6 +125,22 @@ def create_batches(size, word_dic, embs):
     return batches_train_ids, batches_train_masks, batches_dev_ids, batches_dev_masks
 
 
+def write_embs(dic, meta_embs, out_file):
+    meta_embs = meta_embs.tolist()
+    word_map = {}
+    for k, v in dic.iteritems():
+        word_map[v] = k
+
+    with codecs.open(out_file, 'w', 'utf8') as fout:
+        for i in range(len(meta_embs)):
+            if i not in word_map:
+                continue
+
+            out_str = word_map[i] + ' '
+            out_str += ' '.join(['%.5f' % val for val in meta_embs[i]])
+            fout.write(out_str + '\n')
+
+
 class Learner(object):
     def __init__(self, args):
         self.args = args
@@ -162,7 +178,6 @@ class Learner(object):
         train_model, predict_model, meta_embs_output, params = mapper.build_graph()
         print 'Done'
 
-        unchanged = 0
         dropout_rate = np.float64(args.dropout_rate).astype(theano.config.floatX)
 
         start_time = time.time()
@@ -172,8 +187,6 @@ class Learner(object):
         mapper.dropout.set_value(dropout_rate)
         print 'begin to train...'
         for epoch in xrange(args.max_epochs):
-            unchanged += 1
-            if unchanged > 20: return
             train_loss = 0.0
             train_ids, train_masks = random_batches(train_ids, train_masks)
             N = len(train_ids)
@@ -207,6 +220,8 @@ class Learner(object):
                     mapper.dropout.set_value(dropout_rate)
                     start_time = time.time()
 
-            meta_embs = meta_embs_output(dev_ids[0])
-            print meta_embs.shape
+            if epoch % 50 == 0:
+                meta_embs = meta_embs_output(dev_ids[0])
+                out_file = '%s.epoch%d' % (args.out, epoch)
+                write_embs(dic, meta_embs, out_file)
             print 'Done'
