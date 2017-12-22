@@ -223,5 +223,5 @@ class Learner(object):
             if epoch % 50 == 0:
                 meta_embs = meta_embs_output(dev_ids[0])
                 out_file = '%s.epoch%d' % (args.out, epoch)
-                write_embs(dic, meta_embs, out_file)
+                write_embs(dic, meta_embs.eval(), out_file)
             print 'Done'
